@@ -1,0 +1,16 @@
+.bottomNav {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottomNav svg {
+    cursor: pointer;
+}
+
+.bottomNav svg.active {
+    color: teal;
+}
