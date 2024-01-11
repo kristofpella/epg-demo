@@ -1,7 +1,7 @@
 {
   "name": "epg-demo-kristof",
-  "version": "1.0.0",
-  "entry-point": "src/index.ts",
+  "version": "1.0.1",
+  "entry-point": "index.ts",
   "description": "Completed test assessment to Norigin Media",
   "repository": {
     "type": "git",
@@ -16,10 +16,6 @@
   },
   "author": "Kristof Pella",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NoriginMedia/candidate-tester/issues"
-  },
-  "homepage": "https://github.com/NoriginMedia/candidate-tester#readme",
   "dependencies": {
     "@mui/icons-material": "^5.15.3",
     "@nessprim/planby-pro": "^3.8.0",
