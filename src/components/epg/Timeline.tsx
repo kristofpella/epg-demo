@@ -36,7 +36,9 @@ const Timeline = (props: Timeline) => {
       const { isNewDay, time } = getTime(item);
       const position = { left: hourWidth * index, width: hourWidth };
       const isVisible = isTimelineVisible(position);
+
       if (!isVisible) return null;
+  
       return (
         <TimelineBox
           key={index}

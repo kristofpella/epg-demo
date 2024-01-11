@@ -6,6 +6,8 @@ import {
   CurrentTimeContent,
 } from '@nessprim/planby-pro';
 
+import './LiveTime.css';
+
 export const LiveTime = ({
   isBaseTimeFormat,
   time,
@@ -15,7 +17,7 @@ export const LiveTime = ({
     <CurrentTimeBox {...styles.position}>
       <CurrentTimeContent
         isBaseTimeFormat={isBaseTimeFormat}
-        style={{ color: "red" }}
+        className='currentTimeContent'
       >
         {time}
       </CurrentTimeContent>

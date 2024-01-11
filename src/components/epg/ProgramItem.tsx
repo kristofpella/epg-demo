@@ -29,10 +29,7 @@ import {
     const tillTime = formatTime(till, set12HoursTimeFormat()).toLowerCase();
 
     const handleProgramClick = useCallback(() => {
-        console.log(program)
-
-        navigate('/asset', { state: { data: program.data }})
-
+      navigate('/asset', { state: { data: program.data }})
     }, [program])
   
     return (
@@ -58,6 +55,6 @@ import {
             </ProgramStack>
           </ProgramFlex>
         </ProgramContent>
-      </ProgramBox>
-    );
+    </ProgramBox>
+  );
 };
