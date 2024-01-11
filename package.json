@@ -1,10 +1,11 @@
 {
-  "name": "candidate-tester",
-  "version": "0.0.1",
-  "description": "This is intended to used as instructions for completing the Norigin Media testing task for new candidates",
+  "name": "epg-demo-kristof",
+  "version": "1.0.0",
+  "entry-point": "src/index.ts",
+  "description": "Completed test assessment to Norigin Media",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NoriginMedia/candidate-tester.git"
+    "url": "git+https://github.com/kristofpella/epg-demo.git"
   },
   "scripts": {
     "start:mock-api": " node ./node_modules/nm-mock-api/scripts/updateEpg.js && ./node_modules/.bin/osprey-mock-service -f ./node_modules/nm-mock-api/demo.raml -p 1337 --cors",
@@ -13,7 +14,7 @@
     "serve": "cross-env NODE_ENV=production webpack --config config/webpack.config.prod.js && cross-env serve dist/",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src/"
   },
-  "author": "Dylan Thomson",
+  "author": "Kristof Pella",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/NoriginMedia/candidate-tester/issues"

@@ -3,6 +3,10 @@ import { createRoot } from 'react-dom/client';
 
 import { App } from './components/App';
 
-const app = <App />;
+export const app = <App />;
 
-createRoot(document.getElementById('app')).render(app);
+function renderApp() {
+    createRoot(document.getElementById('app')).render(app);
+}
+
+renderApp();
