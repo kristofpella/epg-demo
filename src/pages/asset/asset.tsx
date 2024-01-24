@@ -7,6 +7,7 @@ import './asset.css';
 
 export function Asset() {
     const location = useLocation();
+
     return (
         <>
             <AssetTopBar />
@@ -18,7 +19,7 @@ export function Asset() {
                         <span>14:30-17:00</span>
                         <span>● 3 May</span>
                     </div>
-                    <h2 className="assetName">{location.state.data.title}</h2>
+                    <h2 className="assetName">{location.state.title}</h2>
                     <div className="genres">
                         <span>2015</span>
                         <span>Romance</span>

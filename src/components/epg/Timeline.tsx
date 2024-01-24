@@ -1,84 +1,57 @@
-import React from 'react';
-import {
-    CurrentTime,
-    // eslint-disable-next-line import/named
-    Timeline,
-    TimelineWrapper,
-    TimelineBox,
-    TimelineTime,
-    TimelineDivider,
-    TimelineDividers,
-    useTimeline,
-  } from '@nessprim/planby-pro';
-  
-const Timeline = (props: Timeline) => {
-    const {
-      time,
-      dividers,
-      timelineHeight,
-      timelineDividers,
-      getTime,
-      getTimelineProps,
-      getCurrentTimeProps,
-    } = useTimeline(props);
-  
-    const {
-      isToday,
-      isBaseTimeFormat,
-      isCurrentTime,
-      isTimelineVisible,
-      isVerticalMode,
-    } = props;
-  
-    const { hourWidth } = props;
-  
-    const renderTime = (item: string | number, index: number) => {
-      const { isNewDay, time } = getTime(item);
-      const position = { left: hourWidth * index, width: hourWidth };
-      const isVisible = isTimelineVisible(position);
+import React, { useMemo, ReactNode } from 'react';
 
-      if (!isVisible) return null;
-  
-      return (
-        <TimelineBox
-          key={index}
-          isToday={isToday}
-          isCurrentTime={isCurrentTime}
-          isVerticalMode={isVerticalMode}
-          timelineHeight={timelineHeight}
-          {...position}
-        >
-          <TimelineTime
-            isVerticalMode={isVerticalMode}
-            isNewDay={isNewDay}
-            isBaseTimeFormat={isBaseTimeFormat}
-          >
-            {time}
-          </TimelineTime>
-          <TimelineDividers isVerticalMode={isVerticalMode}>
-            {renderDividers(isNewDay)}
-          </TimelineDividers>
-        </TimelineBox>
-      );
+import { Schedule } from './Schedule';
+import { numberToDate } from '@src/helpers';
+import { Schedule as ScheduleType } from '@src/types/ChannelItem';
+
+export type TimeLineProps = {
+  range: {
+    start: Date | number,
+    end: Date | number
+  },
+  channel: ReactNode,
+  schedules: ScheduleType[]
+};
+
+export const Timeline = ({ channel, range, schedules }: TimeLineProps) => {
+    const normalizedRange = {
+        start: range.start instanceof Date ? range.start : numberToDate(range.start),
+        end: range.end instanceof Date ? range.end : numberToDate(range.end)
     };
-  
-    const renderDividers = (isNewDay: boolean) =>
-      dividers.map((_, index) => (
-        <TimelineDivider
-          key={index}
-          isVerticalMode={isVerticalMode}
-          isNewDay={isNewDay}
-          width={hourWidth / timelineDividers}
-          left={index * (hourWidth / timelineDividers)}
-        />
-      ));
-  
-    return (
-      <TimelineWrapper {...getTimelineProps()}>
-        {isCurrentTime && isToday && <CurrentTime {...getCurrentTimeProps()} />}
-        {time.map((item, index) => renderTime(item, index))}
-      </TimelineWrapper>
-    );
-}
 
-export { Timeline };
+    const renderedSchedules = useMemo(() => {
+        if (schedules.length === 0) {
+            return [];
+        }
+
+        const result = schedules.map((schedule, index) => (
+            <Schedule
+                key={`${schedule.id}-${index}`}
+                start={new Date(schedule.start)}
+                end={new Date(schedule.end)}
+                title={schedule.title}
+            />
+        ));
+
+        if (normalizedRange.start < new Date(schedules[0].start)) {
+            const additionalSchedule = (
+                <Schedule
+                    key={`extra-${schedules[0].id}`}
+                    start={normalizedRange.start}
+                    end={new Date(schedules[0].start)}
+                    title={schedules[0].title}
+                />
+            );
+            result.unshift(additionalSchedule);
+        }
+
+        return result;
+    }, [schedules, normalizedRange]);
+
+    return (
+        <tr>
+            {channel}
+            {renderedSchedules}
+        </tr>
+    );
+};

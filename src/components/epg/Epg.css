@@ -1,6 +1,14 @@
+
 .epgContainer {
-    height: 87vh;
-    width: 100%;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    height: 85.2vh;
+    padding: 10px;
+    background-color: #171923;
+}
+
+.epgTable {
+    height: 100%;
 }
 
 .nowButton {
@@ -12,7 +20,8 @@
     bottom: 130px;
     width: 90px;
     height: 40px;
-    background-color: teal;
+    background-color: #14DCDC;
     color: white;
     font-weight: bold;
 }
+

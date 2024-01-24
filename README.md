@@ -8,8 +8,6 @@ Channel icons won't be displayed because they are not available on the Norigin M
 
 #### How to install
 
-* After pulling the repository create an `.npmrc` file at the root of the project and add this content copied from the google docs:
-https://docs.google.com/document/d/1LdFgENrRXi1SHf9VX99O5j6kBjAN9P-8U664svnDfsU/edit?usp=sharing
 * Open a terminal at the root of this repository and run `npm install`
 * After installation completed run `npm run start`
 * Open a secondary terminal in the root of the repo and run `npm run start:mock-api`

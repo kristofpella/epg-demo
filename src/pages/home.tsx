@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import { HomeTopBar } from '../components/layout/'
-import { EPG } from '../components/epg';
+import { getTomorrow } from '@src/helpers';
+import { fetchEpg } from '@src/services';
+import { ChannelItem } from '@src/types/ChannelItem';
+import { EPG } from '@src/components/epg/EPG';
 
 
 export function Home() {
-  return (
+    const [channels, setChannels] = useState<ChannelItem[]>();
+
+    const handleFetchChannels = useCallback(async () => {
+        const fetchedChannels = await fetchEpg();
+    
+        setChannels(fetchedChannels)
+    }, []);
+
+    useEffect(() => {
+        handleFetchChannels();
+    }, [])
+
+    if (!channels) {
+        return null
+    }
+
+    return (
         <>
             <HomeTopBar />
-            <EPG />
+            <EPG start={new Date()} end={getTomorrow()} channels={channels} />
         </>
     );
 }

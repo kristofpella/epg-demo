@@ -2,8 +2,10 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    background-color: #141932;
 }
 
 .homeTopBar svg {
     cursor: pointer;
+    color: #14DCDC;
 }

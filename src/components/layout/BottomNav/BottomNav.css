@@ -5,12 +5,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #141932;
 }
 
 .bottomNav svg {
     cursor: pointer;
+    color: grey;
 }
 
 .bottomNav svg.active {
-    color: teal;
+    color: #14DCDC;
 }
