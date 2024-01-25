@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Home, LiveTv, ViewList, Replay, LocationOn } from '@mui/icons-material';
-
 import './BottomNav.css';
 
 enum MenuitemIndexes {
@@ -13,34 +11,61 @@ enum MenuitemIndexes {
   LOCATION = 4,
 }
 
-export const BottomNav = () =>  {
-  const navigate = useNavigate();
-  const [activeMenuItem, setActiveMenuItem] = useState(MenuitemIndexes.HOME);
+const ICON_CLASS_NAME = 'material-symbols-outlined';
 
-  const getClassName = useCallback((index: MenuitemIndexes) => {
-    if (index === activeMenuItem) {
-      return 'active'
+export const BottomNav = () =>  {
+    const navigate = useNavigate();
+    const [activeMenuItem, setActiveMenuItem] = useState(MenuitemIndexes.HOME);
+
+    const getClassName = useCallback((index: MenuitemIndexes) => {
+        if (index === activeMenuItem) {
+            return `${ICON_CLASS_NAME} active`
+        }
+
+        return ICON_CLASS_NAME;
+    }, [activeMenuItem])
+
+    const handleDefaultClick = (index: MenuitemIndexes) => {
+        setActiveMenuItem(index);
     }
 
-    return null
-  }, [activeMenuItem])
+    const handleHomeClick = (index: MenuitemIndexes) => {
+        setActiveMenuItem(index)
+        navigate('/')
+    }
 
-  const handleDefaultClick = (index: MenuitemIndexes) => {
-    setActiveMenuItem(index);
-  }
-
-  const handleHomeClick = (index: MenuitemIndexes) => {
-    setActiveMenuItem(index)
-    navigate('/')
-  }
-
-  return (
-    <div className="bottomNav">
-       <LiveTv className={getClassName(0)} onClick={() => handleDefaultClick(MenuitemIndexes.LIVE_TV)} />
-       <ViewList className={getClassName(1)} onClick={() => handleDefaultClick(MenuitemIndexes.VIEW_LIST)} />
-       <Home className={getClassName(2)} onClick={() => handleHomeClick(MenuitemIndexes.HOME)} />
-       <Replay className={getClassName(3)} onClick={() => handleDefaultClick(MenuitemIndexes.REPLAY)} />
-       <LocationOn className={getClassName(4)} onClick={() => handleDefaultClick(MenuitemIndexes.LOCATION)} /> 
-    </div>
-  )
+    return (
+        <div className="bottomNav">
+            <span
+                className={getClassName(0)}
+                onClick={() => handleDefaultClick(MenuitemIndexes.LIVE_TV)}
+            >
+                live_tv
+            </span>
+            <span
+                className={getClassName(1)}
+                onClick={() => handleDefaultClick(MenuitemIndexes.VIEW_LIST)}
+            >
+                view_list
+            </span>
+            <span
+                className={getClassName(2)}
+                onClick={() => handleHomeClick(MenuitemIndexes.HOME)}
+            >
+                home
+            </span>
+            <span
+                className={getClassName(3)}
+                onClick={() => handleDefaultClick(MenuitemIndexes.REPLAY)}
+            >
+                replay
+            </span>
+            <span
+                className={getClassName(4)}
+                onClick={() => handleDefaultClick(MenuitemIndexes.LOCATION)}
+            >
+                location_on
+            </span>
+        </div>
+    )
 }

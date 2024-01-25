@@ -17,7 +17,6 @@
   "author": "Kristof Pella",
   "license": "MIT",
   "dependencies": {
-    "@mui/icons-material": "^5.15.3",
     "classnames": "^2.5.1",
     "nm-mock-api": "git+https://github.com/NoriginMedia/mock-api.git#cloudberry",
     "react": "^18.2.0",

@@ -4,7 +4,7 @@ import { HomeTopBar } from '../components/layout/'
 import { getTomorrow } from '@src/helpers';
 import { fetchEpg } from '@src/services';
 import { ChannelItem } from '@src/types/ChannelItem';
-import { EPG } from '@src/components/epg/EPG';
+import { EPG } from '@src/components/epg/Epg';
 
 
 export function Home() {

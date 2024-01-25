@@ -8,11 +8,11 @@
     background-color: #141932;
 }
 
-.bottomNav svg {
+.bottomNav span {
     cursor: pointer;
     color: grey;
 }
 
-.bottomNav svg.active {
+.bottomNav span.active {
     color: #14DCDC;
 }

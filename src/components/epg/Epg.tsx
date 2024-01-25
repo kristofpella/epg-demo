@@ -6,7 +6,7 @@ import { ChannelItem } from '@src/types/ChannelItem';
 import { Timeline } from './Timeline';
 import { Channel } from './channel/Channel';
 
-import './EPG.css';
+import './Epg.css';
 
 export type EPGProps = {
   start: Date | number,

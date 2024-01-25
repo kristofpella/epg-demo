@@ -1,5 +1,4 @@
 import React from 'react';
-import { Search, ChevronLeft } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 import './AssetTopBar.css'
@@ -9,8 +8,10 @@ export const AssetTopBar = () => {
 
     return (
         <div className="assetTopBar">
-            <ChevronLeft onClick={() => navigate('/')} />
-            <Search />
+            <span className="material-symbols-outlined" onClick={() => navigate('/')}>
+                chevron_left
+            </span>
+            <span className="material-symbols-outlined">search</span>
         </div>
     )
 }
