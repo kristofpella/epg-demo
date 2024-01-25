@@ -15,18 +15,18 @@ export type ShowProps = {
 export const Asset = ({ title, start, end }: ShowProps) => {
     const navigate = useNavigate();
 
-    const handleProgramClick = useCallback(() => {
+    const handleAssetClick = useCallback(() => {
         navigate('/asset', { state: { title }})
     }, [title, navigate])
 
 
     const now = new Date().getTime();
-    const isShowRunningCurrently = useMemo(() => {
+    const isAssetPlayingCurrently = useMemo(() => {
         return now > start.getTime() && now < end.getTime();
     }, [now, start, end]);
 
     return (
-        <div className={clsx('asset', { active: isShowRunningCurrently })} onClick={handleProgramClick}>
+        <div className={clsx('asset', { active: isAssetPlayingCurrently })} onClick={handleAssetClick}>
             <span>{title}</span>
             <span className='assetRange'>
                 {formatDate(start)} - {formatDate(end)}
